@@ -1,0 +1,25 @@
+{
+  "name": "smartcription",
+  "version": "1.0.0",
+  "description": "Securing prescriptions through the Ethereum blockchain",
+  "scripts": {
+    "typechain": "npx hardhat typechain",
+    "test": "npx hardhat test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/T-jegou/SmartCription.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/T-jegou/SmartCription/issues"
+  },
+  "homepage": "https://github.com/T-jegou/SmartCription#readme",
+  "dependencies": {
+    "hardhat": "^2.11.2"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^2.0.0"
+  }
+}
