@@ -14,6 +14,8 @@ contract SmartCription is
 {
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
+    bytes32 public constant MEDIC_ROLE = keccak256("MEDIC_ROLE");
+    bytes32 public constant PHARMACIST_ROLE = keccak256("PHARMACIST_ROLE");
 
     constructor() ERC1155("https://smartcription.io/api/token/{id}") {
         _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
