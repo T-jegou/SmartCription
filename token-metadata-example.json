@@ -1,0 +1,27 @@
+{
+    "name": "Prescription",
+    "description": "The optional description of the Prescription",
+    "image": "https://smartcription.com/prescription.png",
+    "attributes": [
+        {
+            "trait_type": "drug",
+            "value": "Paracetamol"
+        },
+        {
+            "trait_type": "dosage",
+            "value": "1 pill"
+        },
+        {
+            "trait_type": "frequency",
+            "value": "1 pill per day"
+        },
+        {
+            "trait_type": "valid",
+            "value": 32442 // in seconds
+        },
+        {
+            "trait_type": "notes",
+            "value": "The optional notes of the Prescription"
+        }
+    ]
+}
