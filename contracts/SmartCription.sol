@@ -29,6 +29,8 @@ contract SmartCription is
     bytes32 public constant MEDIC_ROLE = keccak256("MEDIC_ROLE");
     bytes32 public constant PHARMACIST_ROLE = keccak256("PHARMACIST_ROLE");
 
+    event PrescriptionClaimed(address indexed account, uint256 indexed id, uint256 block);
+
     constructor() ERC1155("https://smartcription.io/api/token/{id}") {
         _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _setupRole(MINTER_ROLE, msg.sender);
@@ -44,13 +46,14 @@ contract SmartCription is
     /// @notice Called by the patient to claim the prescription from the pharmacist
     function claim(address account, uint256 id, uint256 amount) public {
         // the recipient must be a pharmacist
-        require(hasRole(PHARMACIST_ROLE, account), "The recippient must be a pharmacist");
+        require(hasRole(PHARMACIST_ROLE, account), "The recipient must be a pharmacist");
         // the patient must transfer 1 token to a pharmacist
         require(amount == 1, "The patient must transfer 1 token to a pharmacist");
         // the patient must have 2 tokens
         require(balanceOf(msg.sender, id) == 2, "The patient must have 2 tokens");
         // transfer 1 token to a pharmacist
-        safeTransferFrom(account, address(this), id, 1, "");
+        safeTransferFrom(msg.sender, account, id, 1, "");
+        emit PrescriptionClaimed(msg.sender, id, block.number);
     }
 
     function pause() public onlyRole(PAUSER_ROLE) {

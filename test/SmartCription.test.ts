@@ -20,6 +20,11 @@ describe("SmartCription", () => {
         await smartCription.grantRole(await smartCription.MEDIC_ROLE(), medic1.address)
     })
 
+    const grantPharmaAndCheck = async () => {
+        await smartCription.grantRole(await smartCription.PHARMACIST_ROLE(), pharma1.address)
+        expect(await smartCription.hasRole(await smartCription.PHARMACIST_ROLE(), pharma1.address)).to.be.true
+    }
+
     it("Should deploy", async () => {
         expect(smartCription.address).to.properAddress
     })
@@ -51,13 +56,30 @@ describe("SmartCription", () => {
         })
 
         it("Should be able to grant the pharma role", async () => {
-            await smartCription.grantRole(await smartCription.PHARMACIST_ROLE(), pharma1.address)
-            expect(await smartCription.hasRole(await smartCription.PHARMACIST_ROLE(), pharma1.address)).to.be.true
+            await grantPharmaAndCheck()
         })
     })
 
     describe("Prescriptions", () => {
-        
+        it("Shoulnd't be able to mint a prescription if not a medic", async () => {
+            await expect(smartCription.connect(patient1).mint(patient1.address, 0, 2, "0x00"))
+                .to.be.reverted
+        })
+
+        it("Should be able to mint a prescription only as a medic", async () => {
+            await smartCription.connect(medic1).mint(patient1.address, 0, 2, "0x00")
+            await expect(await smartCription.balanceOf(patient1.address, 0)).to.equal(2)
+        })
+    })
+
+    describe("Claims", () => {
+        it("Should be able to claim a prescription", async () => {
+            await grantPharmaAndCheck()
+            await smartCription.connect(medic1).mint(patient1.address, 0, 2, "0x00")
+            await smartCription.connect(patient1).claim(pharma1.address, 0, 1)
+            await expect(await smartCription.balanceOf(patient1.address, 0)).to.equal(1)
+            await expect(await smartCription.balanceOf(pharma1.address, 0)).to.equal(1)
+        })
     })
 
 })
