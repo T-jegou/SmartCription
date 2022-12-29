@@ -42,6 +42,7 @@
     "@web3-react/walletconnect": "^8.0.1-beta.0",
     "@web3-react/walletconnect-connector": "^6.2.13",
     "@web3-react/walletlink-connector": "^6.2.14",
+    "ethers": "^5.7.2",
     "hardhat": "^2.11.2",
     "next": "^13.1.1",
     "react": "^18.2.0",
