@@ -11,3 +11,6 @@ artifacts
 
 # Next files
 .next
+
+# MacOS files
+.DS_Store
