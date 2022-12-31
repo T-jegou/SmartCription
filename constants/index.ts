@@ -1,0 +1,4 @@
+const TERM_AND_SERVICES_URL="/terms"
+const DISCLAIMER_URL="/disclaimer"
+
+export { TERM_AND_SERVICES_URL, DISCLAIMER_URL }
