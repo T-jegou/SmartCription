@@ -1,10 +1,15 @@
-import SelectWalletModal from "@components/wallet/ModalConnect"
+import Content from "@components/Content"
+import Navbar from "@components/Navbar"
+import { Container } from "@mantine/core"
 
 const Index = () => {
+    
     return (
         <div>
-            <h1>Index</h1>
-            <SelectWalletModal/>
+            <Navbar/>
+            <Container>
+                <Content/>
+            </Container>
         </div>
     )
 }
