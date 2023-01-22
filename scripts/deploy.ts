@@ -11,7 +11,8 @@ async function main() {
 
     const SmartCription = await ethers.getContractFactory("SmartCription")
     let smartCription = await SmartCription.deploy()
-    await smartCription.deployed()
+    const contract = await smartCription.deployed()
+    console.log(`SmartCription deployed to: ${contract.address}`)
     await smartCription.grantRole(await smartCription.MEDIC_ROLE(), medic)
     await smartCription.grantRole(await smartCription.PHARMACIST_ROLE(), pharma)
 }
