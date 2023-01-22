@@ -26,13 +26,18 @@
       "@constants/*": [
         "constants/*"
       ],
+      "@utils/*": [
+        "utils/*"
+      ],
     }
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    "./typechain-types"
   ],
+  "files": ["./hardhat.config.ts"],
   "exclude": [
     "node_modules"
   ]

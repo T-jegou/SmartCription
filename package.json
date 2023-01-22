@@ -5,7 +5,9 @@
   "scripts": {
     "typechain": "npx hardhat typechain",
     "test": "npx hardhat test",
-    "dev": "next dev",
+    "node": "npx hardhat node",
+    "deploy": "npx hardhat run scripts/deploy.ts --network localhost",
+    "dev": "npm run deploy && next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -51,6 +53,10 @@
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^1.0.2",
-    "@types/react": "18.0.26"
+    "@nomiclabs/hardhat-waffle": "^2.0.3",
+    "@typechain/ethers-v5": "^10.2.0",
+    "@typechain/hardhat": "^6.1.5",
+    "@types/react": "18.0.26",
+    "typechain": "^8.1.1"
   }
 }
