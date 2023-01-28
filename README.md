@@ -24,7 +24,11 @@ npx hardhat coverage
 ## Deployment
 ### Setup
 - `cp .env.example .env`
-- Fill in the values in `.env`, especially the `MEDIC_ADDRESS` and `PHARMA_ADDRESS` values that you can get from Metamask
+- Fill in the values in `.env`, especially the `MEDIC_ADDRESS` and `PHARMA_ADDRESS` values that you can get from the account you can create on Metamask
+- Generate the TypeScript types for the contracts
+```sh
+npm run typechain
+```
 - Setup the hardhat local node
 ```sh
 npx hardhat node
@@ -32,6 +36,11 @@ npx hardhat node
 - Deploy the contracts
 ```sh
 npx hardhat run scripts/deploy.ts --network localhost
+```
+- Copy the `SmartCription` contract address from the output and paste it in the `.env` file as the `NEXT_PUBLIC_CONTRACT` value
+- Run the frontend
+```sh
+npm run dev
 ```
 
 ## Help
