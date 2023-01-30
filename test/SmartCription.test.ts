@@ -4,6 +4,7 @@ import { expect } from "chai"
 import { ethers } from "hardhat"
 import { SmartCription } from "../typechain-types"
 import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers"
+import { BigNumber } from "ethers"
 
 describe("SmartCription", () => {
     
@@ -62,23 +63,25 @@ describe("SmartCription", () => {
 
     describe("Prescriptions", () => {
         it("Shoulnd't be able to mint a prescription if not a medic", async () => {
-            await expect(smartCription.connect(patient1).mint(patient1.address, 0, 2, "0x00"))
+            await expect(smartCription.connect(patient1).mint(patient1.address, 2, "0x00"))
                 .to.be.reverted
         })
 
         it("Should be able to mint a prescription only as a medic", async () => {
-            await smartCription.connect(medic1).mint(patient1.address, 0, 2, "0x00")
-            await expect(await smartCription.balanceOf(patient1.address, 0)).to.equal(2)
+            const tx = await smartCription.connect(medic1).mint(patient1.address, 2, "0x00")
+            const id: BigNumber = (await tx.wait()).events?.find(event => event.event === 'PrescriptionMinted')?.args?.id
+            await expect(await smartCription.balanceOf(patient1.address, id)).to.equal(2)
         })
     })
 
     describe("Claims", () => {
         it("Should be able to claim a prescription", async () => {
             await grantPharmaAndCheck()
-            await smartCription.connect(medic1).mint(patient1.address, 0, 2, "0x00")
-            await smartCription.connect(patient1).claim(pharma1.address, 0, 1)
-            await expect(await smartCription.balanceOf(patient1.address, 0)).to.equal(1)
-            await expect(await smartCription.balanceOf(pharma1.address, 0)).to.equal(1)
+            const tx = await smartCription.connect(medic1).mint(patient1.address, 2, "0x00")
+            const id: BigNumber = (await tx.wait()).events?.find(event => event.event === 'PrescriptionMinted')?.args?.id
+            await smartCription.connect(patient1).claim(pharma1.address, id, 1)
+            await expect(await smartCription.balanceOf(patient1.address, id)).to.equal(1)
+            await expect(await smartCription.balanceOf(pharma1.address, id)).to.equal(1)
         })
     })
 

@@ -6,6 +6,7 @@ import "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155Burnable.sol";
 import "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155Pausable.sol";
 import "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155Supply.sol";
 import "@openzeppelin/contracts/access/AccessControl.sol";
+import "@openzeppelin/contracts/utils/Counters.sol";
 
 /**
  * @title SmartCription
@@ -24,11 +25,15 @@ contract SmartCription is
     ERC1155Pausable,
     ERC1155Supply
 {
+    using Counters for Counters.Counter;
+    Counters.Counter private _tokenId;
+
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
     bytes32 public constant MEDIC_ROLE = keccak256("MEDIC_ROLE");
     bytes32 public constant PHARMACIST_ROLE = keccak256("PHARMACIST_ROLE");
 
+    event PrescriptionMinted(address indexed account, uint256 indexed id);
     event PrescriptionClaimed(address indexed account, uint256 indexed id, uint256 block);
 
     constructor() ERC1155("https://smartcription.io/api/token/{id}") {
@@ -37,10 +42,13 @@ contract SmartCription is
         _setupRole(PAUSER_ROLE, msg.sender);
     }
 
-    function mint(address account, uint256 id, uint256 amount, bytes memory data) public onlyRole(MEDIC_ROLE) {
+    function mint(address account, uint256 amount, bytes memory data) public onlyRole(MEDIC_ROLE) {
+        uint256 id = _tokenId.current();
         // token total supply can't exceed 2
         require(totalSupply(id) + amount <= 2, "Total supply can't exceed 2");
         _mint(account, id, amount, data);
+        _tokenId.increment();
+        emit PrescriptionMinted(account, id);
     }
 
     /// @notice Called by the patient to claim the prescription from the pharmacist
