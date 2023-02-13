@@ -4,6 +4,7 @@ import { Web3ReactProvider } from "@web3-react/core"
 import { ethers } from "ethers"
 import { AppProps } from 'next/app'
 import Head from 'next/head'
+import '../style/index.css'
 
 export default function App(props: AppProps) {
   const { Component, pageProps } = props
