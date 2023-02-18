@@ -1,4 +1,4 @@
-export default function Medic() {
+export default function Pharma() {
     return (
         <div>
             <h1>Pharma</h1>
