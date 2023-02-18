@@ -5,9 +5,12 @@
 *{
     font-family: 'Quicksand', sans-serif;
     color: #684DEC;
-
-    background: linear-gradient(107.76deg, #EBF6FF 6.69%, #ECECFE 52.99%, #FEEFF3 98.71%);
 }
+body{
+  background: linear-gradient(107.76deg, #EBF6FF 6.69%, #ECECFE 52.99%, #FEEFF3 98.71%) ;
+
+}
+
 .prescription-preview {
     padding: 10px 16px 15px 15px;
     width: 690px;
@@ -30,6 +33,7 @@
 
   .prescription-preview button{
         background: #684DEC;
+        width: 40%;
         font-family: 'Quicksand', sans-serif;
         color: #fff;
         border: 0;
