@@ -5,9 +5,11 @@ import { ethers } from "hardhat"
 import { SmartCription } from "../typechain-types"
 import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers"
 import { BigNumber } from "ethers"
+import { Add_priscription_DB} from "../lib/backend"
+
 
 describe("SmartCription", () => {
-    
+
     let smartCription: SmartCription
 
     let owner: SignerWithAddress, patient1: SignerWithAddress, medic1: SignerWithAddress, pharma1: SignerWithAddress
@@ -70,6 +72,7 @@ describe("SmartCription", () => {
         it("Should be able to mint a prescription only as a medic", async () => {
             const tx = await smartCription.connect(medic1).mint(patient1.address, 2, "0x00")
             const id: BigNumber = (await tx.wait()).events?.find(event => event.event === 'PrescriptionMinted')?.args?.id
+            await Add_priscription_DB(id.toString(),patient1.address )
             await expect(await smartCription.balanceOf(patient1.address, id)).to.equal(2)
         })
     })
