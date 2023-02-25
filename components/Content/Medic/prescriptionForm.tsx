@@ -7,23 +7,23 @@ export default function PrescriptionForm() {
     const [date, setDate] = useState('');
     const [instructions, setInstructions] = useState('');
     
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const handleSubmit = () => {
         const prescription = { address, medication, date, instructions };
         alert('Prescription created');
-        reset(e);
+        reset();
         // TODO create prescription
         // TODO notify user
         // TODO reset form
       }
-      const reset=(e)=>{
+      const reset=()=>{
         setAddress('');
         setMedication('');
         setDate('');
         setInstructions('');
       }
     return (
-        <form onSubmit={handleSubmit}>
+        <div className="form">
+            <form onSubmit={handleSubmit}>
                 <label>
                     Wallet address
                     <input type="text" 
@@ -44,8 +44,9 @@ export default function PrescriptionForm() {
                 </label>
                 <div>
                     <button type="submit">Send</button>
-                    <button type="reset"  onClick={(e) => reset(e)}>Cancel</button>
+                    <button type="reset" onClick={reset}>Cancel</button>
                 </div>
             </form>
+        </div>
     )
 }

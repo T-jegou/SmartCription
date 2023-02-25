@@ -53,8 +53,7 @@ export default function Content() {
                 } else if (r[1][0]) {
                     setType("pharma")
                 } else {
-                    setType("pharma")
-                    // setType("patient")
+                    setType("patient")
                 }
             })
         }

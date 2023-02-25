@@ -3,7 +3,7 @@ import PrescriptionForm from "./prescriptionForm";
 
 export default function Medic() {
     return (
-        <div className="form">
+        <div>
             <h1>Write a prescription</h1>
             <PrescriptionForm />
         </div>
