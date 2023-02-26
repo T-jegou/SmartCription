@@ -1,12 +1,13 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import pinataSDK from '@pinata/sdk';
-import { getUserPrescriptions } from 'lib/backend';
+import { addPrescription, getUserPrescriptions } from 'lib/backend';
 import { Database } from '@lib/types/database.types';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method === 'POST') {
         const {prescriptionId, patientAddress, prescriptionIpfsHash} = req.body
-        // TODO: Add prescription to Supabase
+        await addPrescription(prescriptionId, patientAddress, prescriptionIpfsHash)
+        return res.status(200).json({ message: 'Prescription added' })
     } else {
         if (req.method === 'GET') {
             const {patientAddress} = req.query
