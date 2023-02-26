@@ -1,3 +1,4 @@
+import { Prescription } from '@lib/types/prescription';
 import pinataSDK from '@pinata/sdk';
 
 export class Pinata {
@@ -7,7 +8,8 @@ export class Pinata {
         this.pinata = new pinataSDK(process.env.PINATA_API_KEY, process.env.PINATA_API_SECRET_KEY);
     }
 
-    async pinJSONToIPFS(prescriptionId: string, patient: string, medication: string, date: string, instructions: string) {
+    async pinJSONToIPFS(data: Prescription) {
+        const { prescriptionId, patient, medication, date, instructions } = data
         const rep = await this.pinata.pinJSONToIPFS({
             prescriptionId,
             patient,
