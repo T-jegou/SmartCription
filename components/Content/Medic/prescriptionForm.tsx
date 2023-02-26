@@ -1,51 +1,45 @@
-import { useState } from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
 
+type FormValues = {
+    address: string;
+    medication: string;
+    date: string;
+    instructions: string;
+}
 
 export default function PrescriptionForm() {
-    const [address, setAddress] = useState('');
-    const [medication, setMedication] = useState('');
-    const [date, setDate] = useState('');
-    const [instructions, setInstructions] = useState('');
-    
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const prescription = { address, medication, date, instructions };
+    const { register, handleSubmit, reset } = useForm<FormValues>();
+    const onSubmit: SubmitHandler<FormValues> = data => {
+        const { address, medication, date, instructions } = data;
         alert('Prescription created');
-        reset(e);
+        reset();
         // TODO create prescription
         // TODO notify user
         // TODO reset form
-      }
-      const reset=(e)=>{
-        setAddress('');
-        setMedication('');
-        setDate('');
-        setInstructions('');
-      }
+    }
+    
     return (
-        <form onSubmit={handleSubmit}>
-                <label>
-                    Wallet address
-                    <input type="text" 
-                    value={address}
-                    onChange={(e) => setAddress(e.target.value)} />
-                </label>
-                <label>
-                    Medication
-                    <input type="text" value={medication} onChange={(e) => setMedication(e.target.value)}/>
-                </label>
-                <label>
-                    Date
-                    <input type="text" value={date} onChange={(e) => setDate(e.target.value)}/>
-                </label>
-                <label>
-                    Instructions
-                    <textarea value={instructions} onChange={(e) => setInstructions(e.target.value)}/>
-                </label>
-                <div>
-                    <button type="submit">Send</button>
-                    <button type="reset"  onClick={(e) => reset(e)}>Cancel</button>
-                </div>
-            </form>
+        <form onSubmit={handleSubmit(onSubmit)}>
+            <label>
+                Wallet address
+                <input type="text" {...register("address")} />
+            </label>
+            <label>
+                Medication
+                <input type="text" {...register("medication")} />
+            </label>
+            <label>
+                Date
+                <input type="text" {...register("date")}/>
+            </label>
+            <label>
+                Instructions
+                <textarea {...register("instructions")}/>
+            </label>
+            <div>
+                <button type="submit">Send</button>
+                <button type="reset" onClick={(e) => reset()}>Cancel</button>
+            </div>
+        </form>
     )
 }
