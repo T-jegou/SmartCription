@@ -37,6 +37,12 @@ async function main() {
     console.log(`JSON pinned to IPFS with hash: ${hash}`)
 
     await addPrescription(id.toNumber(), patient, hash)
+    await owner.sendTransaction({to: patient, value: ethers.utils.parseEther("1")})
+    console.log(`1 ETH transferred to patient ${patient}`)
+    await owner.sendTransaction({to: pharma, value: ethers.utils.parseEther("1")})
+    console.log(`1 ETH transferred to pharma ${pharma}`)
+    await owner.sendTransaction({to: medic, value: ethers.utils.parseEther("1")})
+    console.log(`1 ETH transferred to medic ${medic}`)
 }
 
 // We recommend this pattern to be able to use async/await everywhere
