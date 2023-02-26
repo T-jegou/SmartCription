@@ -33,7 +33,7 @@ async function main() {
     const date = "2021-01-01"
     const instructions = "Take 2 pills every 4 hours"
     const pinata = new Pinata()
-    const hash = await pinata.pinJSONToIPFS(patient, medication, date, instructions)
+    const hash = await pinata.pinJSONToIPFS(id.toString(), patient, medication, date, instructions)
     console.log(`JSON pinned to IPFS with hash: ${hash}`)
 
     await addPrescription(id.toNumber(), patient, hash)
