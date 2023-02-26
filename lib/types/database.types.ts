@@ -2,7 +2,7 @@ export interface Database {
     public: {
       Tables: {
         userToken: {
-          Row: {id: 'uuid',prescription:string, address: string} 
+          Row: {id: 'uuid',prescriptionId:number, address: string} 
           Insert: {} 
           Update: {} 
         }

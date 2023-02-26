@@ -2,11 +2,11 @@ import { connectionDB } from "./initialize_db";
 import { v4 as uuidv4 } from 'uuid';
 
 
-export async function addPrescription(prescription: string, patientAdress: string) {
+export async function userPrescription(prescriptionId: number, patientAdress: string) {
   const supabase = await connectionDB()
   const { error } = await supabase
     .from('userToken')
-    .insert({ id: uuidv4(), prescription: prescription, address: patientAdress })
+    .insert({ id: uuidv4(), prescriptionId: prescriptionId, address: patientAdress })
   if (error) {
     console.error(error);
   } else {
@@ -16,12 +16,12 @@ export async function addPrescription(prescription: string, patientAdress: strin
 }
 
 
-export async function getPrescription(patientAdress: string) {
+export async function getUserPrescription(prescriptionId: number) {
   const supabase = await connectionDB()
 
   const { data, error } = await supabase
     .from('userToken')
-    .select().eq('address', patientAdress)
+    .select().eq('prescriptionId', prescriptionId)
   if (error) {
     console.error(error);
   } else {
@@ -32,13 +32,13 @@ export async function getPrescription(patientAdress: string) {
 
 
 
-export async function deletePrescription(patientAdress: string) {
+export async function deleteUserPrescription(prescriptionId: number) {
   const supabase = await connectionDB()
 
   const { error } = await supabase
     .from('userToken')
     .delete()
-    .eq('address', patientAdress)
+    .eq('prescriptionId', prescriptionId)
   if (error) {
     console.error(error);
     return false;
@@ -50,12 +50,12 @@ export async function deletePrescription(patientAdress: string) {
 }
 
 
-export async function updatePrescription(prescription: string, patientAddress: string) {
+export async function updateUserPrescription(prescriptionId: string, patientAddress: string) {
   const supabase = await connectionDB()
 
   const { error } = await supabase
     .from('userToken')
-    .update({ prescription: prescription })
+    .update({ prescriptionId: prescriptionId })
     .eq('Address', patientAddress)
   if (error) {
     console.error(error);
