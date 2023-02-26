@@ -10,7 +10,7 @@ import { SmartCription } from "typechain-types"
 export const PrescriptionDetails = ({hash}: {hash: string}) => {
     const [prescription, setPrescription] = React.useState<Prescription>()
     React.useEffect(() => {
-        fetch(`https://ipfs.io/ipfs/${hash}`)
+        fetch(`https://gateway.pinata.cloud/ipfs/${hash}`)
             .then(res => res.json())
             .then((data: Prescription) => {
                 setPrescription(data)
