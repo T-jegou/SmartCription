@@ -1,7 +1,10 @@
+import { getContract } from "@utils/contract";
+import { useWeb3React } from "@web3-react/core";
+import { BigNumber } from "ethers";
 import { useForm, SubmitHandler } from "react-hook-form";
 
 type FormValues = {
-    address: string;
+    patientAddress: string;
     medication: string;
     date: string;
     instructions: string;
@@ -9,8 +12,19 @@ type FormValues = {
 
 export default function PrescriptionForm() {
     const { register, handleSubmit, reset } = useForm<FormValues>();
-    const onSubmit: SubmitHandler<FormValues> = data => {
-        const { address, medication, date, instructions } = data;
+    const { active, account } = useWeb3React()
+    const onSubmit: SubmitHandler<FormValues> = async (data) => {
+        const { patientAddress, medication, date, instructions } = data;
+        if (active && account) {
+            const contract = await getContract()
+            const tx = await contract.mint(patientAddress, 2, "0x00")
+            const prescriptionId: BigNumber = (await tx.wait()).events?.find(event => event.event === 'PrescriptionMinted')?.args?.id
+            // TODO: call Backend API to store prescription id and patient address in database
+            // TODO: call Backend API to create IPFS file with prescription data abd image and store hashes in database
+        } else {
+            alert('Please connect your wallet')
+            return
+        }
         alert('Prescription created');
         reset();
         // TODO create prescription
@@ -21,8 +35,8 @@ export default function PrescriptionForm() {
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <label>
-                Wallet address
-                <input type="text" {...register("address")} />
+                Wallet patient address
+                <input type="text" {...register("patientAddress")} />
             </label>
             <label>
                 Medication
