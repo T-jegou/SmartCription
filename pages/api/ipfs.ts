@@ -5,7 +5,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (req.method === 'POST') {
         // Get prescription data from request body
         const { patient, medication, date, instructions } = req.body
-        const pinata = new pinataSDK('yourPinataApiKey', 'yourPinataSecretApiKey');
+        const pinata = new pinataSDK(process.env.PINATA_API_KEY, process.env.PINATA_API_SECRET_KEY);
         const rep = await pinata.pinJSONToIPFS({
             patient,
             medication,
