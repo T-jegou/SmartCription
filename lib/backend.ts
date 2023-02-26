@@ -10,7 +10,7 @@ export async function addPrescription(prescriptionId: number, patientAdress: str
     if (error) {
         console.error(error);
     } else {
-        console.log('Data inserted successfully!');
+        console.log(`Prescription ${prescriptionId} added successfully!`);
     }
 }
 

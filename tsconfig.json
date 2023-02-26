@@ -29,6 +29,9 @@
       "@utils/*": [
         "utils/*"
       ],
+      "@lib/*": [
+        "lib/*"
+      ],
     }
   },
   "include": [
