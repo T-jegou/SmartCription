@@ -2,7 +2,7 @@ import { connectionDB } from "./initialize_db";
 import { v4 as uuidv4 } from 'uuid';
 
 
-export async function Add_priscription_DB(prescription: string, patientAdress: string) {
+export async function addPrescription(prescription: string, patientAdress: string) {
   const supabase = await connectionDB()
   const { error } = await supabase
     .from('userToken')
@@ -16,7 +16,7 @@ export async function Add_priscription_DB(prescription: string, patientAdress: s
 }
 
 
-export async function get_priscription(patientAdress: string) {
+export async function getPrescription(patientAdress: string) {
   const supabase = await connectionDB()
 
   const { data, error } = await supabase
@@ -32,7 +32,7 @@ export async function get_priscription(patientAdress: string) {
 
 
 
-export async function delete_priscription(patientAdress: string) {
+export async function deletePrescription(patientAdress: string) {
   const supabase = await connectionDB()
 
   const { error } = await supabase
@@ -50,7 +50,7 @@ export async function delete_priscription(patientAdress: string) {
 }
 
 
-export async function update_priscription(prescription: string, patientAddress: string) {
+export async function updatePrescription(prescription: string, patientAddress: string) {
   const supabase = await connectionDB()
 
   const { error } = await supabase
