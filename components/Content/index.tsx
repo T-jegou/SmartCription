@@ -66,7 +66,7 @@ export default function Content() {
             return <Pharmacist />
             break;
         case "patient":
-            return <Welcome />
+            return <Patient />
             break;
         case undefined:
             return <Welcome />
