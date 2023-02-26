@@ -19,8 +19,8 @@ export default function PrescriptionForm() {
             const contract = await getContract()
             const tx = await contract.mint(patientAddress, 2, "0x00")
             const prescriptionId: BigNumber = (await tx.wait()).events?.find(event => event.event === 'PrescriptionMinted')?.args?.id
-            // TODO: call Backend API to store prescription id and patient address in database
-            // TODO: call Backend API to create IPFS file with prescription data abd image and store hashes in database
+            // TODO: call Backend API to create IPFS file with prescription data and image and get the hashes returned
+            // TODO: call Backend API to store prescription id, patient address and prescription data/image hashes obtained from the ipfs in database
         } else {
             alert('Please connect your wallet')
             return
