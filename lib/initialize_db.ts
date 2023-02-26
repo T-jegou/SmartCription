@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js'
-import { Database } from './database.types'
+import { Database } from './types/database.types'
 
 
 export async function connectionDB() {
