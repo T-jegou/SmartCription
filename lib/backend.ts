@@ -29,6 +29,20 @@ export async function getPrescription(prescriptionId: number) {
     return data;
 }
 
+export async function getUserPrescriptions(patientAddress: string) {
+    const supabase = await connectionDB()
+
+    const { data, error } = await supabase
+        .from('userToken')
+        .select().eq('address', patientAddress)
+    if (error) {
+        console.error(error);
+    } else {
+        console.log('Data inserted successfully!');
+    }
+    return data;
+}
+
 export async function deletePrescription(prescriptionId: number) {
     const supabase = await connectionDB()
 
