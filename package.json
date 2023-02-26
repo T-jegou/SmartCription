@@ -30,6 +30,7 @@
     "@mantine/hooks": "^5.9.5",
     "@mantine/next": "^5.9.5",
     "@openzeppelin/contracts": "^4.8.0",
+    "@supabase/supabase-js": "^2.8.0",
     "@pinata/sdk": "^2.1.0",
     "@tabler/icons": "^1.118.0",
     "@web3-react/coinbase-wallet": "^8.0.22-beta.0",
@@ -52,6 +53,8 @@
     "next": "^13.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "supabase": "^1.38.7",
+    "uuid": "^9.0.0",
     "react-hook-form": "^7.43.2"
   },
   "devDependencies": {
@@ -60,6 +63,7 @@
     "@typechain/ethers-v5": "^10.2.0",
     "@typechain/hardhat": "^6.1.5",
     "@types/react": "18.0.26",
+    "@types/uuid": "^9.0.1",
     "typechain": "^8.1.1"
   }
 }
