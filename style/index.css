@@ -85,5 +85,9 @@ body{
     cursor: pointer;
     outline:none;
   }
+  .logo{
+    vertical-align: text-bottom;
+    margin-right: 10px;
+  }
 
 
