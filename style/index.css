@@ -2,13 +2,21 @@
 
 /* base style */
 
-* {
-    font-family: 'Quicksand', sans-serif;
-    color: #684DEC;
+.application {
+  height: 100%;
+  background: linear-gradient(107.76deg, #EBF6FF 6.69%, #ECECFE 52.99%, #FEEFF3 98.71%) ;
 }
 
-body {
-    background: linear-gradient(107.76deg, #EBF6FF 6.69%, #ECECFE 52.99%, #FEEFF3 98.71%) ;
+.application h1, .application h2, .application h3, .application h4, .application h5, .application h6,
+.application p, .application label {
+  font-family: 'Quicksand', sans-serif;
+  color: #684DEC;
+}
+
+.login {
+  height: 100%;
+  background: rgb(157,162,236);
+  background: radial-gradient(circle, rgba(157,162,236,1) 0%, rgba(88,97,226,1) 91%, rgba(88,97,226,1) 97%, rgba(88,97,226,1) 100%);
 }
 
 .prescription-preview {
@@ -111,6 +119,41 @@ body {
     justify-content: space-between;
     align-items: baseline;
 }
+body {
+  height: 100vh;
+}
+
+#__next, .login-page {
+  height: 100%;
+}
+
+.login-page {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.5em;
+  color: white;
+  background: rgb(157,162,236);
+  background: radial-gradient(circle, rgba(157,162,236,1) 0%, rgba(88,97,226,1) 91%, rgba(88,97,226,1) 97%, rgba(88,97,226,1) 100%);
+}
+
+.login-text-title h1 {
+  font-size: 2.5em;
+}
+
+.login-connect-wallet {
+  text-align: center;
+}
+
+.button-connect-app {
+  color: black;
+  background-color: #FF9C29;
+}
+
+.button-connect-app:hover {
+  background-color: #fab25f;
+}
+
 
 .switch-button {
     margin: 0;

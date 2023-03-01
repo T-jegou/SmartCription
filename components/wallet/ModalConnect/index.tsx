@@ -30,7 +30,7 @@ export default function SelectWalletModal() {
                     <WalletWarningTab />
                 </Stack>
             </Modal>
-            <Button rightIcon={<IconAppWindow />} styles={(theme) => ({
+            <Button className='button-connect-app' rightIcon={<IconAppWindow />} styles={(theme) => ({
                 root: {
                     borderRadius: theme.radius.md,
                     width: '220px',
