@@ -29,6 +29,9 @@
       "@utils/*": [
         "utils/*"
       ],
+      "@lib/*": [
+        "lib/*"
+      ],
     }
   },
   "include": [
@@ -36,7 +39,7 @@
     "**/*.ts",
     "**/*.tsx",
     "./typechain-types"
-  ],
+, "lib/database.types"  ],
   "files": ["./hardhat.config.ts"],
   "exclude": [
     "node_modules"
