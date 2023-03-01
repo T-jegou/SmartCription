@@ -16,7 +16,7 @@ export default function Navbar() {
                 size={1.5}
                 color="#684DEC"
               
-            />Smartcription {process.env.PUBLIC_URL}</h1>
+            />Smartcription</h1>
             </div>
                 <SelectWalletModal/>
             </Group>
