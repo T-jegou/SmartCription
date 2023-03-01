@@ -2,13 +2,13 @@
 
 /* base style */
 
-*{
+* {
     font-family: 'Quicksand', sans-serif;
     color: #684DEC;
 }
-body{
-  background: linear-gradient(107.76deg, #EBF6FF 6.69%, #ECECFE 52.99%, #FEEFF3 98.71%) ;
 
+body {
+    background: linear-gradient(107.76deg, #EBF6FF 6.69%, #ECECFE 52.99%, #FEEFF3 98.71%) ;
 }
 
 .prescription-preview {
@@ -19,62 +19,64 @@ body{
     background-color: #fff;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
     border-radius: 10px;
-  }
+}
 
-  .prescriptionlist-preview{
+.prescriptionlist-preview {
     display:grid;
     justify-content: center;
-  }
+}
   
-  .prescriptionlist-preview h1{
+.prescriptionlist-preview h1 {
     margin-left: -45px;
     opacity: 100%;
-  }
+}
 
-  .prescription-preview button{
-        background: #684DEC;
-        width: 40%;
-        font-family: 'Quicksand', sans-serif;
-        color: #fff;
-        border: 0;
-        padding: 8px;
-        border-radius: 8px;
-        cursor: pointer;
-  }
+.prescription-preview button {
+    background: #684DEC;
+    width: 40%;
+    font-family: 'Quicksand', sans-serif;
+    color: #fff;
+    border: 0;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+}
 
-  .form{
+.form {
     padding-top: 20px;
     max-width: 400px;
     margin: 0 auto;
     text-align: center;
-  }
+}
 
-  .form label{
+.form label {
     text-align: left;
     display: block;
-  }
-  .form h1{
+}
+
+.form h1 {
     margin-left: -500px;
     margin-bottom: 40px;
-  }
-  .form input, .form textarea {
+}
+
+.form input, .form textarea {
     width: 100%;
     padding: 15px;
     margin: 10px 0;
     border: 1px solid #684DEC;
     border-radius: 8px;
-  }
+}
 
-  .form textarea{
+.form textarea {
     height: 100px;
-  }
+}
 
-  .form div{
+.form div {
     display:flex;
     justify-content: flex-end;
+}
 
-  }
-  .form button {
+.form button {
     background: #684DEC;
     color: #fff;
     border:none;
@@ -104,4 +106,19 @@ body{
     text-decoration:underline;
   }
 
+.prescriptions-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
 
+.switch-button {
+    margin: 0;
+    padding: 0;
+}
+
+.prescription-preview button[disabled] {
+    background-color: #373157;
+    color: gray;
+    cursor: not-allowed;
+}

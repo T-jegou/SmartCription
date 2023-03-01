@@ -69,7 +69,7 @@ export const IsReedemable = ({id}: {id: number}) => {
     }
     return (
         <>
-            <Button disabled={!isRedeemable} onClick={() => setOpened(true)}>Redeem</Button>
+            <Button disabled={!isRedeemable} onClick={() => setOpened(true)}>{isRedeemable ? 'Redeem' : 'Redeemed'}</Button>
             <Modal
                 opened={opened}
                 onClose={() => setOpened(false)}
