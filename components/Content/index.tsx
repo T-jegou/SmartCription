@@ -4,12 +4,24 @@ import { getContract } from "@utils/contract";
 import MedicContent from "./Medic";
 import PharmacistContent from "./Pharma";
 import PatientContent from "./Patient";
+import SelectWalletModal from "@components/wallet/ModalConnect"
+import Icon from '@mdi/react';
+import { mdiHeartPulse } from '@mdi/js';
 
 function Welcome () {
     return (
-        <>
-            <h2>Welcome</h2>
-        </>
+        <div className="login-page">
+            <div className="login-text-title">
+                <Icon path={mdiHeartPulse} size={8} />
+                <h1>SmartCription</h1>
+                <p>Find your prescription all in one digitalized place</p>
+                <p>Connect your wallet to start</p>
+            </div>
+            <div className="login-connect-wallet">
+                <h3>Log in</h3>
+                <SelectWalletModal />
+            </div>
+        </div>
     )
 }
 
