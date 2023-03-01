@@ -18,17 +18,15 @@ export default function Pharma() {
     const { register, handleSubmit } = useForm<FormValues>();
     
     const onSubmit: SubmitHandler<FormValues> = async (data) => {
-        const id = process.env.PATIENT_ADDRESS
-        // const { id } = data;
-        // fetch(`/api/prescriptions?patientAddress=${id}`)
-        //     .then(res => {
-        //         return res.json()})
-        //     .then((data: Database['public']['Tables']['userToken']['Row'][]) => {
-        //         console.log(data);
+        const { id } = data;
+        fetch(`/api/prescriptions?patientAddress=${id}`)
+            .then(res => {
+                return res.json()})
+            .then((data: Database['public']['Tables']['userToken']['Row'][]) => {
+                console.log(data);
                 
-        //         setPrescriptions(data)
-        //         setWalletPatient({ address: data[0].address, name: '' })
-        //     })
+                setWalletPatient({ address: data[0].address, name: '', prescriptions })
+            })
         const prescriptions = [
             {
                 prescriptionId: 123,
@@ -41,15 +39,9 @@ export default function Pharma() {
                 redeemed: true
             }
         ]
-        setWalletPatient({ address: id, name: 'Random name', prescriptions })
-
-        // if (active && account) {
-        //     const contract = await getContract()
-        //     const balance = await contract.balanceOf(account, id)
-        //     balance.toNumber() > 0 ? setRedeemed(true) : setRedeemed(false)
-        // } else {
-        //     alert("Please connect your wallet")
-        // }
+        // Fake data
+        // const id = process.env.PATIENT_ADDRESS
+        // setWalletPatient({ address: id, name: 'Random name', prescriptions })
     }
 
     const clearPatient = () => {

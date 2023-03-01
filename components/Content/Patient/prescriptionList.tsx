@@ -6,7 +6,7 @@ import { BigNumber } from 'ethers';
 import * as React from 'react';
 import { SmartCription } from 'typechain-types';
 
-const PrescriptionList = ({ prescriptions, onlyRedeemeds }: { prescriptions: Database['public']['Tables']['userToken']['Row'][], onlyRedeemeds: boolean }) => {
+const PrescriptionList = ({ prescriptions, onlyRedeemeds = false, filterRedeem = false }: { prescriptions: Database['public']['Tables']['userToken']['Row'][], onlyRedeemeds: boolean, filterRedeem: boolean }) => {
     const { active, account, library } = useWeb3React()
 
     const isRedeemable = (prescriptionId: number) => {
@@ -29,7 +29,7 @@ const PrescriptionList = ({ prescriptions, onlyRedeemeds }: { prescriptions: Dat
         <div className="prescriptionlist-preview" >
             { prescriptions.map((prescription) => {
                 const redeemable = isRedeemable(prescription.prescriptionId);
-                if ((onlyRedeemeds && !redeemable) || (!onlyRedeemeds && redeemable)) {
+                if (filterRedeem && ((onlyRedeemeds && !redeemable) || (!onlyRedeemeds && redeemable))) {
                     return <></>;
                 }
                 noPrescriptions = false;
