@@ -1,4 +1,4 @@
-import { Container, Group } from "@mantine/core";
+import { Button, Container, Group } from "@mantine/core";
 import SelectWalletModal from "@components/wallet/ModalConnect"
 import { useWeb3React } from "@web3-react/core"
 import Icon from '@mdi/react';
@@ -18,7 +18,12 @@ export default function Navbar() {
               
             />Smartcription</h1>
             </div>
+
+            <div>
                 <SelectWalletModal/>
+                <button className="toolbar-buttons" type="submit" >Home</button>
+                <button className="toolbar-buttons" type="submit" >About us</button>
+            </div>
             </Group>
         </Container>
     );
