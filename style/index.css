@@ -100,5 +100,8 @@ body{
         border-radius: 8px;
         cursor: pointer;
   }
+  .toolbar-buttons:hover{
+    text-decoration:underline;
+  }
 
 

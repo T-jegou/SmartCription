@@ -15,7 +15,6 @@ export default function Navbar() {
                 <Icon className="logo" path={mdiAmbulance}
                 size={1.5}
                 color="#684DEC"
-              
             />Smartcription</h1>
             </div>
 
