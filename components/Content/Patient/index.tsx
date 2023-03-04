@@ -25,7 +25,7 @@ export default function Patient() {
     }, [active])
     return (
         <div>
-            <h1>Here are your subscriptions</h1> 
+            <h1>Here are your prescriptions</h1> 
             <PrescriptionList prescriptions={prescriptions.prescriptions} /> 
         </div>  
     )
