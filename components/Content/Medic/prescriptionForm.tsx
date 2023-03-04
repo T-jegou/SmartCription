@@ -46,7 +46,7 @@ export default function PrescriptionForm() {
     }
     
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form className="form" onSubmit={handleSubmit(onSubmit)}>
             <label>
                 Wallet patient address
                 <input type="text" {...register("patientAddress")} />
