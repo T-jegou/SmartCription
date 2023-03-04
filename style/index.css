@@ -32,6 +32,8 @@
 .prescriptionlist-preview {
     display:grid;
     justify-content: center;
+    font-family: 'Quicksand', sans-serif;
+    color: #684DEC;
 }
   
 .prescriptionlist-preview h1 {
