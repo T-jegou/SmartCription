@@ -84,7 +84,7 @@
     justify-content: flex-end;
 }
 
-.form button {
+.form button, .formButton {
     background: #684DEC;
     color: #fff;
     border:none;

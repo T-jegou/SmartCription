@@ -74,7 +74,7 @@ export default function Pharma() {
                     <h1>Patient wallet address</h1>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <input type="text" {...register("id")} />
-                        <input type="submit" value="Submit"/>
+                        <input className="formButton" type="submit" value="Submit"/>
                     </form>
                     {/* {
                         redeemed !== undefined && redeemed ? <div>✅ Redeemed</div> : <div>❌ Not redeemed</div>
