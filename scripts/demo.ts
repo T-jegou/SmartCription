@@ -1,4 +1,4 @@
-import { addPrescription } from "../lib/backend";
+import { addPrescription, deletePrescription } from "../lib/backend";
 import { Pinata } from "../lib/pinata";
 import { BigNumber } from "ethers";
 import { ethers } from "hardhat";
@@ -36,6 +36,8 @@ async function main() {
     const hash = await pinata.pinJSONToIPFS({prescriptionId: id.toString(), patient, medication, date, instructions})
     console.log(`JSON pinned to IPFS with hash: ${hash}`)
 
+    const res = await deletePrescription(id.toNumber())
+    console.log(`Prescription ${id} cleaned from Supabase: ${res}`)
     await addPrescription(id.toNumber(), patient, hash)
     await owner.sendTransaction({to: patient, value: ethers.utils.parseEther("1")})
     console.log(`1 ETH transferred to patient ${patient}`)
